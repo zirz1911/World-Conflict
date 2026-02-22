@@ -100,7 +100,7 @@ export default function WorldMap({
   shippingEnabled = false,
   flightEnabled = false,
   layers = [],
-  mapStyle = "satellite",
+  mapStyle = "dark",
   onStyleChange
 }: WorldMapProps) {
   const { t } = useLanguage();

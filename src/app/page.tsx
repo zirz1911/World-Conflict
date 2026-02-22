@@ -35,7 +35,7 @@ export default function Home() {
   const { t } = useLanguage();
   const { nextRefreshIn, triggerRefresh } = useDataRefresh();
   const [layers, setLayers] = useState(defaultLayers);
-  const [mapStyle, setMapStyle] = useState<MapStyle>("satellite");
+  const [mapStyle, setMapStyle] = useState<MapStyle>("dark");
   const [activeTab, setActiveTab] = useState<TabId>("active");
   const [sidePanelOpen, setSidePanelOpen] = useState(true);
   const [briefingOpen, setBriefingOpen] = useState(true);

@@ -21,7 +21,7 @@ export default function FlightLayer({ map, enabled }: FlightLayerProps) {
   const { timezone, formatTime } = useTimezone();
   const flightPathsRef = useRef<L.Polyline[]>([]);
   const planeMarkersRef = useRef<Map<string, L.Marker>>(new Map());
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const flightProgressRef = useRef<Map<string, number>>(new Map());
   const curvedPathsRef = useRef<Map<string, [number, number][]>>(new Map());
 

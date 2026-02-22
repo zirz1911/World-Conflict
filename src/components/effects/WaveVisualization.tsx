@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { windWaveData } from "@/data/mockData";
+// Local wave data stub — wave layer is disabled by default in World Conflict
+const windWaveData = [
+  { location: "North Atlantic", windSpeed: 85, waveHeight: 8.2, direction: "NW", status: "storm" },
+  { location: "South China Sea", windSpeed: 185, waveHeight: 12.5, direction: "W", status: "typhoon" },
+  { location: "Mediterranean", windSpeed: 45, waveHeight: 3.1, direction: "E", status: "moderate" },
+  { location: "Indian Ocean", windSpeed: 60, waveHeight: 4.8, direction: "SW", status: "rough" },
+  { location: "Pacific (East)", windSpeed: 30, waveHeight: 1.5, direction: "NE", status: "calm" },
+  { location: "Southern Ocean", windSpeed: 95, waveHeight: 9.5, direction: "W", status: "storm" },
+  { location: "Bay of Bengal", windSpeed: 55, waveHeight: 3.8, direction: "S", status: "moderate" },
+  { location: "Caribbean", windSpeed: 40, waveHeight: 2.2, direction: "E", status: "calm" },
+];
 
 interface WaveVisualizationProps {
   map: any; // Leaflet map instance

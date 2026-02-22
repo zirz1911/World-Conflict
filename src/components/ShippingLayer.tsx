@@ -20,7 +20,7 @@ export default function ShippingLayer({ map, enabled }: ShippingLayerProps) {
   const { timezone, formatTime } = useTimezone();
   const routeLinesRef = useRef<L.Polyline[]>([]);
   const shipMarkersRef = useRef<Map<string, L.Marker>>(new Map());
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const shipProgressRef = useRef<Map<string, number>>(new Map());
 
   useEffect(() => {

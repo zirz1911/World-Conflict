@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { windWaveData } from "@/data/mockData";
+// Local wind data stub for particle system animation
+const windWaveData = [
+  { windSpeed: 85, direction: "NW" },
+  { windSpeed: 45, direction: "W" },
+  { windSpeed: 30, direction: "NE" },
+  { windSpeed: 60, direction: "SW" },
+  { windSpeed: 95, direction: "W" },
+  { windSpeed: 40, direction: "E" },
+  { windSpeed: 55, direction: "S" },
+  { windSpeed: 70, direction: "N" },
+];
 
 interface Particle {
   x: number;

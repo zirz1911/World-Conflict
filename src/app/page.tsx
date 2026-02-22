@@ -4,6 +4,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import TopNavBar from "@/components/TopNavBar";
 import LayersSidebar from "@/components/LayersSidebar";
+import DailyBriefing from "@/components/DailyBriefing";
 import ActiveConflictsPanel from "@/components/ActiveConflictsPanel";
 import AlertsPanel from "@/components/AlertsPanel";
 import CasualtiesPanel from "@/components/CasualtiesPanel";
@@ -37,6 +38,9 @@ export default function Home() {
   const [mapStyle, setMapStyle] = useState<MapStyle>("satellite");
   const [activeTab, setActiveTab] = useState<TabId>("active");
   const [sidePanelOpen, setSidePanelOpen] = useState(true);
+  const [briefingOpen, setBriefingOpen] = useState(true);
+  const BRIEFING_H = 39; // px height of briefing strip when open
+  const extraTop = briefingOpen ? BRIEFING_H : 0;
 
   const toggleLayer = (id: string) => {
     setLayers((prev) =>
@@ -85,18 +89,20 @@ export default function Home() {
       {/* Top Navigation */}
       <TopNavBar />
 
+      {/* Daily Briefing Strip */}
+      <DailyBriefing open={briefingOpen} onToggle={() => setBriefingOpen(v => !v)} />
+
       {/* Layer Sidebar - Left */}
-      <LayersSidebar layers={layers} onToggleLayer={toggleLayer} />
+      <LayersSidebar layers={layers} onToggleLayer={toggleLayer} topOffset={extraTop} />
 
       {/* Right Side Panel with Tabs */}
       <div
         className={`
-          absolute top-[72px] right-0 z-[500]
-          h-[calc(100vh-140px)]
+          absolute right-0 z-[500]
           transition-all duration-400 ease-out
           ${sidePanelOpen ? "translate-x-0" : "translate-x-[calc(100%-48px)]"}
         `}
-        style={{ width: 380 }}
+        style={{ width: 380, top: 72 + extraTop, height: `calc(100vh - ${140 + extraTop}px)` }}
       >
         <div className="flex h-full">
           {/* Vertical Tab Bar */}

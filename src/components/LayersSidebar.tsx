@@ -13,6 +13,7 @@ interface Layer {
 interface LayersSidebarProps {
   layers: Layer[];
   onToggleLayer: (id: string) => void;
+  topOffset?: number;
 }
 
 const layerIcons: Record<string, string> = {
@@ -26,7 +27,7 @@ const layerIcons: Record<string, string> = {
   "flight-paths": "✈️",
 };
 
-export default function LayersSidebar({ layers: layerState, onToggleLayer }: LayersSidebarProps) {
+export default function LayersSidebar({ layers: layerState, onToggleLayer, topOffset = 0 }: LayersSidebarProps) {
   const [open, setOpen] = useState(true);
   const { t } = useLanguage();
 
@@ -44,7 +45,7 @@ export default function LayersSidebar({ layers: layerState, onToggleLayer }: Lay
   const enabledCount = layerState.filter((l) => l.enabled).length;
 
   return (
-    <div className="absolute top-[72px] left-3 z-[1000] select-none">
+    <div className="absolute left-3 z-[1000] select-none transition-all duration-300" style={{ top: 72 + topOffset }}>
       {!open ? (
         <button
           onClick={() => setOpen(true)}
